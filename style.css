@@ -1,0 +1,55 @@
+/*设置文档背景*/
+html{
+	font-size: 10px;
+	background: url(background-img.jpg) bottom center;  
+	background-size: cover;   /*规定背景图片的尺寸，扩展足够大，使背景图像完全覆盖背景区域*/
+}
+body, html{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;  /*设置字体*/
+}
+.keys {
+	/*display：flex；布局，既可以用于容器中，也可以应用于行内元素
+	 *flex：“弹性布局”，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效
+	 */
+	display: flex;
+	/*flex:用于设置或检索弹性盒模型对象的子元素如何分配空间;如果元素不是弹性盒模型对象的子元素，则 flex 属性不起作用.*/
+	flex: 1; /*flex-grow:1; flex-shrink:1; flex-basis:0%;*/
+	min-height: 100vh; /*设置元素的最小高度*/
+	align-items: center;   /*元素在主轴（页面）当前行的侧轴（纵轴）方向上的对齐方式*/
+	justify-content: center;  /*元素在横轴（页面）上居中排列*/
+}
+.key {
+	border: .4rem solid black;  /*width,style,color值*/
+	border-radius: .5rem;  /*向 div 元素添加圆角边框*/
+	margin: 1rem;
+	font-size: 1.5rem;
+	padding: 1rem .5rem;
+	transition: all .07s ease;  /*定义动画在0.07秒内完成*/
+	width: 10rem;
+	text-align: center; /*用于盒子里的文字、图片等内容居中*/
+	color: white;
+	background: rgba(0,0,0,0.4);
+	text-shadow: 0 0 .5rem black;
+}
+/*定义了.palying类，在按键按下的时侯为该元素添加playing类，在结束后移除playing类*/
+.playing {
+	transform: scale(1.1);   /*在键盘被点击时将该元素缩放至原来的1.1倍*/
+	border-color: #ffc600;
+	box-shadow: 0 0 1rem #FFC600;
+}
+/*
+*.key{border: .4rem solid black;} .playing{border-color: #ffc600;}--这两条属性在按键点击的时候改变边框颜色
+*.key{text-shadow: 0 0 .5rem black;} .playing{box-shadow: 0 0 1rem #ffc600;}这两条属性在按键点击的时候改变阴影的效果
+*/
+kbd {
+	display: block;
+	font-size: 4rem;
+}
+.sound{
+	font-size: 1.2rem;
+	text-transform: uppercase;  /*控制文本的大小写,仅有大写字母*/
+	letter-spacing: .1rem;
+	color: #FFC600;
+}
