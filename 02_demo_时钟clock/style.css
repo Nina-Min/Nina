@@ -1,0 +1,95 @@
+html {
+	font-size: 625%;
+	background: #018DED url(image/picture4.JPG) bottom center;
+	background-size: cover;
+}
+html, body {
+	margin: 0px;
+	padding: 0px;
+	display: flex;
+	min-height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.clock {
+	position: relative;
+	width: 3rem;
+	height: 3rem;
+	border: 0.2rem solid white;
+	margin: 0.5rem auto;
+	padding: 0.2rem;
+	background: rgb(0,0,0,0.4);
+	border-radius: 50%;
+	box-shadow: 0 0 2px 4px rgb(0,0,0,0.1),       
+				0 0 10px 3px rgb(0,0,0,0.2),       
+				0 0 1px 2px #EFEFEF inset,         
+				0 0 30px black inset;      
+	/*box-shadow四行属性值分别对应左、上、右、下边阴影；
+	 *值包括：h-shadow水平阴影（必须）；v-shadow垂直阴影（必须）；blur模糊距离（可选）；
+	         spread阴影的尺寸（可选）；color阴影的颜色（可选）；inset将外部阴影（outset）改为内部阴影（可选，默认外部）
+	*/
+}
+.clock-face {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+/*时钟表盘中心圆点*/
+.clock-face::after {
+	content: '';
+	display: block;
+	width: .1rem;
+	height: .1rem;
+	background-color: #a8c5d1;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 50%;   /*向div元素添加圆角边框*/
+}
+/*指针通用样式，在sass中可以封装成一个mixin*/
+.hand {
+	background: #fff;
+	position: absolute;
+	bottom: 50%;
+	left: 50%;
+	/*transform:translateX(-50%); 虽说这样可以使指针居中线，但是translate的平移是相对于自身center位置的，
+	那么这样居中处理后，下面的旋转仍旧按的是平移之前的right位置为原点，虽说三个指针通过translateY看似处于一条中线上，
+	实际旋转时仍然是按照各自的right位置进行旋转*/
+	transform: rotate(0deg);
+	transform-origin: 50% 100%;    
+	box-shadow: 0 0 0 1px rgb(0,0,0,0.1),
+				0 0 8px rgb(0,0,0,0.4),
+				2px 5px 1px rgb(0,0,0,0.5);
+}
+/*时针样式*/
+.hour-hand {
+	height: 40%;
+	width: 0.1rem;
+	margin-left: -0.05rem;  /*使时针向左移动自身的一半来居中*/
+	border-bottom-left-radius: .05rem;
+	border-top-left-radius: .05rem;
+}
+.min-hand {
+	height: 45%;
+	width: 0.05rem;
+	margin-left: -0.025rem;
+}
+.sec-hand {
+	height: 50%;
+	width: .02rem;
+	margin-left: -0.01rem;
+	border-bottom-left-radius: .02rem;
+	border-top-left-radius: .02rem;
+	background-color: red;
+}
+/*日期、时间、星期几的样式*/
+.dateblock {
+	width: 5rem;
+	position: relative;
+	font-size: 1rem;
+	font-family: serif;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+}
